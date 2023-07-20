@@ -1,0 +1,591 @@
+/*
+[References]
+Image Uploader:
+https://codepen.io/siremilomir/pen/jBbQGo
+https://codepen.io/gaitho/pen/mjBBLP
+Select Box:
+https://codepen.io/gulshankumar/pen/AMxNQX
+Button:
+https://getcssscan.com/css-buttons-examples
+Range Slider:
+https://uicookies.com/range-slider-css/
+https://codepen.io/pwambach/pen/MWWNaJO
+https://www.w3schools.com/howto/howto_js_rangeslider.asp
+Color Picker:
+https://codepen.io/DestructiveBurn/pen/YzrQYVY
+*/
+
+
+html, body, * {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+html, body {
+    height: 100%;
+    text-align: center;
+}
+
+body {
+    padding: 2rem;
+    background: rgb(247, 202, 201);
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgba(247, 202, 201, 1) 0%, rgba(146, 168, 209, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(247, 202, 201, 1) 0%, rgba(146, 168, 209, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(247, 202, 201, 1) 0%, rgba(146, 168, 209, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /* IE6-9 fallback on horizontal gradient */
+}
+
+.total-container {
+    width: 100%;
+    height: 100%;
+}
+
+.left-container {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.right-container {
+    position: relative;
+    float: right;
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.select-button-container {
+    float: left;
+    width: 33.33%;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 3em;
+    letter-spacing: 0px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.02), 2px 2px rgba(0, 0, 0, 0.02), 3px 3px rgba(0, 0, 0, 0.02), 4px 4px rgba(0, 0, 0, 0.02), 5px 5px rgba(0, 0, 0, 0.02), 6px 6px rgba(0, 0, 0, 0.02), 7px 7px rgba(0, 0, 0, 0.02);
+}
+
+h1 i {
+    position: relative;
+    font-size: 70px;
+}
+
+p {
+    float: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    color: #5f6982;
+}
+
+/* Hyperlink Style*/
+a {
+    position: relative;
+    display: inline-block;
+    transition: .3s;
+    text-decoration: none;
+    color: #454445;
+}
+
+a::before {
+    position: absolute;
+    bottom: .3em;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: #ad1823;
+    opacity: 0;
+    transition: .3s;
+}
+
+a:hover::before {
+    bottom: -5;
+    opacity: 1;
+}
+
+a:hover {
+    color: #ad1823;
+}
+
+
+/*Box Shadow Remover*/
+.vc-sketch,.vc-chrome{
+  box-shadow: none;
+}
+/*Border Radious Remover*/
+.vc-sketch{
+border-radius:0;
+}
+/*Background Remover*/
+.vc-chrome-body,.vc-sketch,.vc-chrome{
+background:transparent;
+}
+
+
+/*--<>_-_-_-_-_<>--
+Color Pickers
+--<>_-_-_-_-_<>--*/
+/*Vue Color Picker Core*/
+.vue-color-picker {
+  display: none;
+  width: auto;
+  justify-content: center;
+}
+/*Vue Color Picker Container*/
+.vue-color-picker-container {
+  background: #fff;
+}
+/*Vue Color Picker Body*/
+.vc-sketch,.vc-chrome{
+  width:300px;
+}
+/*Vue Color Picker Selector Body*/
+.vc-chrome {
+  height: 387px;
+  padding: 10px;
+}
+/*Vue Color Picker Scrubber Bar Height*/
+.vc-sketch-alpha-wrap,.vc-sketch-hue-wrap,.vc-chrome-alpha-wrap,.vc-chrome-hue-wrap {
+  height: 15px;
+}
+/*Vue Color Picker Scrubber Bar Selector Buttons*/
+.vc-chrome-hue-wrap .vc-hue-picker, .vc-chrome-alpha-wrap .vc-alpha-picker{
+  width: 16px;
+  height: 16px;
+}
+/*Vue Color Picker Scrubber Button Selectors*/
+.vc-saturation-circle,.vc-chrome-saturation-wrap .vc-saturation-circle {
+  width: 12px;
+  height: 12px;
+}
+/*Vue Color Picker Scrubber Bar Buttons*/
+.vc-hue-picker,.vc-alpha-picker {
+  width: 16px;
+  height: 16px;
+  border-radius: 6px;
+  transform: translate(-6px, -2px);
+  background-color: rgb(248, 248, 248);
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 37%);
+  z-index: 10;
+}
+/*Vue Color Picker Selector Input*/
+.vc-chrome-fields .vc-input__input {
+  height: 30px;
+  font-size: 16px;
+}
+/*Vue Color Picker Input*/
+.vc-sketch-field .vc-input__input {
+  height: 23px;
+  font-size: 14px;
+}
+/*Vue Color Picker Under Input Text*/
+.vc-chrome-fields .vc-input__label,.vc-sketch-field .vc-input__label{
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #969696;
+}
+/*Vue Color Picker Output Color Example Window*/
+.vc-sketch-color-wrap {
+  width: 50px;
+  height: 35px;
+}
+/*Vue Color Picker Selector Example Window Position*/
+.vc-chrome-color-wrap {
+  position: absolute;
+  width: 36px;
+  margin-top: 130px;
+}
+/*Vue Color Picker Selector Example Window*/
+.vc-chrome-color-wrap .vc-checkerboard,.vc-chrome-active-color {
+  width: 270px;
+  height: 65px;
+}
+/*Vue Color Picker Preset Colors*/
+.vc-sketch-presets-color{
+width: 20px;
+  height: 20px;
+}
+/*Vue Color Picker Toggle Icon Position*/
+.vc-chrome-toggle-icon {
+  margin-right: -7px;
+  margin-top: 10px;
+}
+/*Vue Color Picker Toggle Icon Size*/
+.vc-chrome-toggle-icon svg {
+  width: 30px !important;
+  height: 30px !important;
+  background: #fff;
+}
+/*Vue Color Picker Toggle Icon Color*/
+.vc-chrome-toggle-icon svg path{
+  fill: #000;
+stroke: #000;
+}
+
+
+/* Image Uploader Style */
+.avatar-upload {
+    position: relative;
+    display: inline-block;
+    width: 80%;
+    margin: 0px auto 30px;
+    text-align: center;
+}
+
+.avatar-upload .avatar-edit {
+    position: absolute;
+    right: 0px;
+    z-index: 1;
+    top: 0px;
+}
+.avatar-upload .avatar-edit input {
+    display: none;
+}
+.avatar-upload .avatar-edit input + label {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 0;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+    background: #f1f1f1;
+    border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+    content: "\f03e";
+    font-family: 'FontAwesome';
+    color: #757575;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+}
+.avatar-upload .result-color-edit {
+  position: absolute;
+  right: 0px;
+  z-index: 1;
+  top: 35px;
+}
+.avatar-upload .result-color-edit button {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+.avatar-upload .result-color-edit button:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+.avatar-upload .result-color-edit button:after {
+  content: "\f1de";
+  font-family: 'FontAwesome';
+  color: #757575;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+.avatar-upload .avatar-preview {
+    width: 0%;
+    height: auto;
+    position: relative;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > canvas {
+    width: 100%;
+    height: 100%; 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.avatar-upload .source-canvas {
+    position: relative;
+    clear: both;
+    width: 100%;
+    text-align: center;
+    transition: all .2s ease;
+    user-select: none;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Image Uploader Style */
+.avatar-result {
+  position: relative;
+  display: inline-block;
+  width: 80%;
+  margin: 0px auto 30px;
+  text-align: center;
+}
+.avatar-result .result-color-edit {
+  position: absolute;
+  right: 0px;
+  z-index: 1;
+  top: 0px;
+}
+.avatar-result .result-color-edit button {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+.avatar-result .result-color-edit button:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+.avatar-result .result-color-edit button:after {
+  content: "\f1de";
+  font-family: 'FontAwesome';
+  color: #757575;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+.avatar-result .avatar-preview {
+  width: 0%;
+  height: auto;
+  position: relative;
+  border: 6px solid #F8F8F8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-result .avatar-preview > canvas {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.avatar-result .result-canvas {
+  position: relative;
+  clear: both;
+  width: 100%;
+  text-align: center;
+  transition: all .2s ease;
+  user-select: none;
+  border: 6px solid #F8F8F8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Button Style */
+.button-89 {
+    --b: 3px;   /* border thickness */
+    --s: .45em; /* size of the corner */
+    --color: #373B44;
+
+    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    color: var(--color);
+    --_p: var(--s);
+    background:
+        conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+        var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .6em;
+    font-size: 16px;
+
+    border: 0;
+
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-89:hover,
+.button-89:focus-visible{
+    --_p: 0px;
+    outline-color: var(--color);
+    outline-offset: .05em;
+}
+
+.button-89:active {
+    background: var(--color);
+    color: #fff;
+}
+
+/* Chosen Style */
+select-box {
+  position: relative;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+select-box:after {
+  content: '▼';
+  position: absolute;
+  width: 37px;
+  color: #999;
+  font-weight: bold;
+  font-size: 16px;
+  right: 2px;
+  bottom: 8px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+select-box:before {
+  content: '';
+  right: 2px;
+  top: 2px;
+  width: 37px;
+  height: 34px;
+  background: #242424;
+  position: absolute;
+  pointer-events: none;
+  display: inline-block;
+  z-index: 1;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+select-box select {
+  position: relative;
+  width: 250px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: rgb(76, 75, 76, .75);
+  color: #e9e9e9;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 10px 9px;
+  margin: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  height: 38px;
+}
+
+/* Slider Style */
+.rolling-slider {
+    position: relative;
+    display: inline-block;
+    width: 70%;
+    margin: 30px auto 30px;
+    text-align: center;
+}
+.rolling-slider input[type="range"] {
+  -webkit-appearance: none;
+  background: transparent;
+  width: 80%;
+  outline: none;
+}
+.rolling-slider input[type="range"]:focus,
+.rolling-slider input[type="range"]:active,
+.rolling-slider input[type="range"]::-moz-focus-inner,
+.rolling-slider input[type="range"]::-moz-focus-outer {
+  border: 0;
+  outline: none;
+}
+.rolling-slider input[type="range"]::-moz-range-thumb {
+  border: none;
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  background-image: url("./thumbs-sprite.png");
+  background-position: 0 0;
+  background-size: cover;
+  transform: scale(1.9) rotateZ(var(--thumb-rotate, 10deg));
+  cursor: pointer;
+}
+.rolling-slider input[type="range"]::-moz-range-thumb:active {
+  background-position: 100% 0px;
+  transform: scale(2) rotateZ(var(--thumb-rotate, 10deg));
+}
+.rolling-slider input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 20px;
+  background: rgb(255, 255, 255, .5);
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  cursor: pointer;
+}
+.rolling-slider input[type="range"]::-moz-range-progress {
+  height: 20px;
+  background: #4685d7;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.rolling-slider input[type="range"]::-webkit-slider-thumb {
+  border: none;
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  background-image: url("./thumbs-sprite.png");
+  background-position: 0 0;
+  background-size: cover;
+  transform: scale(1.9) rotateZ(var(--thumb-rotate, 10deg));
+  cursor: pointer;
+  margin-top: -15px;
+  -webkit-appearance: none;
+}
+.rolling-slider input[type="range"]::-webkit-slider-thumb:active {
+  background-position: 100% 0px;
+  transform: scale(2) rotateZ(var(--thumb-rotate, 10deg));
+}
+.rolling-slider input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 20px;
+  background: rgb(255, 255, 255, .5);
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+.rolling-slider label {
+  background: rgb(255, 255, 255, .5);
+  border-radius: 50%;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  padding: 12px;
+  margin-left: 15px;
+  font-family: Roboto, 'Helvetica Neue', Arial;
+  font-size: 17px;
+  width: 25px;
+  text-align: center;
+  color: #373B44;
+  font-weight: bold;
+  content: '';
+}

@@ -1,0 +1,12 @@
+INTERACTIVE_MODELS_PATH: "./weights"
+EXPS_PATH: "./experiments"
+
+SBD_PATH: "/data2/weiqiaoqiao/Data/images/SBD/benchmark_RELEASE/dataset"
+
+ZOOM_IN:
+  CVPR:
+    SKIP_CLICKS: 1
+    TARGET_SIZE: 480
+    EXPANSION_RATIO: 2.3
+  FIXED:
+    SKIP_CLICKS: -1

@@ -1,0 +1,16 @@
+INTERACTIVE_MODELS_PATH: "./weights"
+EXPS_PATH: "./experiments"
+
+DAVIS_PATH: "/datasets/weiqiaoqiao/images/DAVIS_test"
+
+ZOOM_IN:
+  CVPR:
+    SKIP_CLICKS: 1
+    TARGET_SIZE: 720
+    EXPANSION_RATIO: 3.5
+  FIXED:
+    SKIP_CLICKS: -1
+
+
+
+

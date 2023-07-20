@@ -1,0 +1,12 @@
+INTERACTIVE_MODELS_PATH: "./weights"
+EXPS_PATH: "./experiments"
+
+GRABCUT_PATH: "/datasets/weiqiaoqiao/images/GrabCut"
+
+ZOOM_IN:
+  CVPR:
+    SKIP_CLICKS: 1
+    TARGET_SIZE: 600
+    EXPANSION_RATIO: 3.2
+  FIXED:
+    SKIP_CLICKS: -1

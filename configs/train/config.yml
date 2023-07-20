@@ -1,0 +1,16 @@
+INTERACTIVE_MODELS_PATH: "./checkpoints"
+EXPS_PATH: "./experiments"
+
+# Train datasets
+SBD_PATH: "/datasets/weiqiaoqiao/Data/images/SBD/benchmark_RELEASE/dataset"
+OPENIMAGES_PATH: "/datasets/weiqiaoqiao/Data/images/OpenImages"
+LVIS_v1_PATH: "/datasets/weiqiaoqiao/Data/images/LVIS"
+
+# You can download the weights for HRNet from the repository:
+# https://github.com/HRNet/HRNet-Image-Classification
+IMAGENET_PRETRAINED_MODELS:
+  HRNETV2_W18: "../ritm_interactive_segmentation-master/pretrained_models/hrnetv2_w18_imagenet_pretrained.pth"
+  HRNETV2_W18_SMALL: "../ritm_interactive_segmentation-master/pretrained_models/hrnet_w18_small_model_v2.pth"
+  HRNETV2_W32: "../ritm_interactive_segmentation-master/pretrained_models/hrnetv2_w32_imagenet_pretrained.pth"
+  HRNETV2_W40: "../ritm_interactive_segmentation-master/pretrained_models/hrnetv2_w40_imagenet_pretrained.pth"
+  HRNETV2_W48: "../ritm_interactive_segmentation-master/pretrained_models/hrnetv2_w48_imagenet_pretrained.pth"

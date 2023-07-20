@@ -1,0 +1,62 @@
+<head>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script type="text/javascript" src="static/js/jquery-2.2.1.min.js"></script>
+    <script src="static/js/vue-color-2.8.1.min.js"></script>
+    <script src="static/js/vue-2.6.14.js"></script>
+</head>
+
+<h1 class="animated rotateIn">FCFI Interactive Interface</h2>
+<p class="lead"><a href="https://github.com/veizgyauzgyauz/FCFI"><b>Project Page</b></a></p>
+
+<div class="total-container">
+    <div id="leftContainer" class="left-container">
+        <div class="avatar-upload">
+            <div class="avatar-edit">
+                <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                <label for="imageUpload"></label>
+            </div>
+            <div class="result-color-edit">
+                <button onclick="showColorPicker()" id="colorPickerBtn"></button>
+                
+                <div id="colorPicker" class="vue-color-picker">
+                    <div class="vue-color-picker-container">
+                        <div id="vue_sketch_picker">
+                            <color-picker id="colorPalette" v-model="colors" @input="updateValue"></color-picker>
+                        </div>
+                    </div>		
+                </div>
+            </div>
+            <canvas id="sourceCanvas" class="source-canvas"></canvas>
+        </div>
+        <select-box>
+            <span class="placeholder">Choose click type:</span>
+            <select name='options' id="pointType">
+              <option value='foreground'>Foreground</option>
+              <option value='background'>Background</option>
+            </select>
+        </select-box>
+        <div class="rolling-slider">
+            <span class="placeholder" float="left">Choose click size:</span>
+            <input id="slider" name="slider" type="range" value=0 step="10">
+            <label for="slider">0</label>
+        </div>
+    </div>
+    
+    <div class="right-container">
+        <div class="avatar-result">
+            <canvas id="resultCanvas" class="result-canvas"></canvas>
+        </div>
+        <div class="select-button-container">
+            <button class="button-89" role="button" id="sendBtn"><b>Submit</b></button>
+        </div>
+        <div class="select-button-container">
+            <button class="button-89" role="button" id="clearBtn"><b>Clear</b></button>
+        </div>
+        <div class="select-button-container">
+            <button class="button-89" role="button" id="saveBtn"><b>Save</b></button>
+        </div>
+    </div>
+</div>
+
+<script src="static/js/all-js.js" charset="utf-8"></script>
